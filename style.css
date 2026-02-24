@@ -8,6 +8,8 @@
     --button-hover: #45a049;
     --button-text: white;
     --shadow: rgba(0, 0, 0, 0.1);
+    --input-bg: #fff;
+    --input-border: #ccc;
 }
 
 [data-theme="dark"] {
@@ -16,26 +18,34 @@
     --number-bg: #333;
     --number-text: #f0f0f0;
     --shadow: rgba(255, 255, 255, 0.05);
+    --input-bg: #2a2a2a;
+    --input-border: #444;
 }
 
 body {
     font-family: sans-serif;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
     background-color: var(--bg-color);
     color: var(--text-color);
     transition: background-color 0.3s, color 0.3s;
+    margin: 0;
+    padding: 20px;
 }
 
 .container {
     text-align: center;
+    margin-bottom: 50px;
 }
 
 .lotto-numbers {
     display: flex;
     margin: 20px 0;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 .number {
@@ -49,12 +59,12 @@ body {
     align-items: center;
     font-size: 24px;
     font-weight: bold;
-    margin: 0 5px;
+    margin: 5px;
     box-shadow: 0 2px 5px var(--shadow);
     transition: background-color 0.3s, color 0.3s, box-shadow 0.3s;
 }
 
-#generate-btn {
+#generate-btn, #submit-btn {
     padding: 10px 20px;
     font-size: 18px;
     cursor: pointer;
@@ -66,11 +76,11 @@ body {
     transition: background-color 0.3s, transform 0.1s;
 }
 
-#generate-btn:hover {
+#generate-btn:hover, #submit-btn:hover {
     background-color: var(--button-hover);
 }
 
-#generate-btn:active {
+#generate-btn:active, #submit-btn:active {
     transform: scale(0.98);
 }
 
@@ -85,9 +95,56 @@ body {
     background: transparent;
     color: var(--text-color);
     transition: all 0.3s;
+    z-index: 100;
 }
 
 #theme-toggle:hover {
     background-color: var(--text-color);
     color: var(--bg-color);
+}
+
+.form-container {
+    width: 100%;
+    max-width: 400px;
+    padding: 20px;
+    background: var(--number-bg);
+    border-radius: 10px;
+    box-shadow: 0 4px 15px var(--shadow);
+    transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.form-container h2 {
+    margin-top: 0;
+    text-align: center;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.form-group input, .form-group textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid var(--input-border);
+    border-radius: 5px;
+    background-color: var(--input-bg);
+    color: var(--text-color);
+    box-sizing: border-box;
+    font-family: inherit;
+    transition: border-color 0.3s, background-color 0.3s;
+}
+
+.form-group textarea {
+    height: 100px;
+    resize: vertical;
+}
+
+#submit-btn {
+    width: 100%;
 }
