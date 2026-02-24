@@ -1,10 +1,32 @@
+:root {
+    --bg-color: #f0f0f0;
+    --container-bg: transparent;
+    --text-color: #333;
+    --number-bg: #fff;
+    --number-text: #333;
+    --button-bg: #4CAF50;
+    --button-hover: #45a049;
+    --button-text: white;
+    --shadow: rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="dark"] {
+    --bg-color: #1a1a1a;
+    --text-color: #f0f0f0;
+    --number-bg: #333;
+    --number-text: #f0f0f0;
+    --shadow: rgba(255, 255, 255, 0.05);
+}
+
 body {
     font-family: sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background-color: #f0f0f0;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    transition: background-color 0.3s, color 0.3s;
 }
 
 .container {
@@ -20,14 +42,16 @@ body {
     width: 50px;
     height: 50px;
     border-radius: 50%;
-    background-color: #fff;
+    background-color: var(--number-bg);
+    color: var(--number-text);
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: 24px;
     font-weight: bold;
     margin: 0 5px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 5px var(--shadow);
+    transition: background-color 0.3s, color 0.3s, box-shadow 0.3s;
 }
 
 #generate-btn {
@@ -36,12 +60,34 @@ body {
     cursor: pointer;
     border: none;
     border-radius: 5px;
-    background-color: #4CAF50;
-    color: white;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    transition: background-color 0.3s;
+    background-color: var(--button-bg);
+    color: var(--button-text);
+    box-shadow: 0 2px 5px var(--shadow);
+    transition: background-color 0.3s, transform 0.1s;
 }
 
 #generate-btn:hover {
-    background-color: #45a049;
+    background-color: var(--button-hover);
+}
+
+#generate-btn:active {
+    transform: scale(0.98);
+}
+
+#theme-toggle {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 8px 16px;
+    cursor: pointer;
+    border-radius: 20px;
+    border: 1px solid var(--text-color);
+    background: transparent;
+    color: var(--text-color);
+    transition: all 0.3s;
+}
+
+#theme-toggle:hover {
+    background-color: var(--text-color);
+    color: var(--bg-color);
 }
